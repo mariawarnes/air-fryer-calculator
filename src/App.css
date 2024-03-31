@@ -2,7 +2,4 @@
 
 body {
   @apply font-roboto;
-  @apply font-black;
-  @apply bg-light-green;
-  @apply font-normal;
 }
