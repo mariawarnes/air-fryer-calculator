@@ -7,7 +7,11 @@ const config: Config = {
       fontFamily: {
         roboto: ["Roboto", "Arial", "Helvetica", "sans-serif"],
       },
-      colors: {},
+      colors: {
+        blue: "#2563eb",
+        black: "#222529",
+        grey: "#495057",
+      },
     },
   },
   plugins: [

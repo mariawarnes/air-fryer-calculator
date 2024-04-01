@@ -14,13 +14,13 @@ const Input = ({
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <div className="relative mb-6">
+    <div className="relative">
       <label htmlFor={id}>{label}</label>
       <div className="relative">
         <input
           id={id}
-          className={`w-full appearance-none rounded-md border-DEFAULT p-3`}
-          placeholder={placeholder}
+          className={`w-full appearance-none border-gray-200 border-2 rounded-md p-3`}
+          placeholder={placeholder?.toString()}
           type={type == "number" ? "text" : type}
           inputMode={type == "number" ? "numeric" : undefined}
           pattern={type == "number" ? "[0-9]*" : undefined}

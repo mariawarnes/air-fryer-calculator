@@ -1,12 +1,13 @@
 import React from "react";
+import { ButtonProps } from "../types";
 
-const Button = ({ children, onClick }) => {
+const Button = ({ text, onClick, className }: ButtonProps) => {
   return (
     <button
-      className="p-2 inline-block border border-gray-300 text-sm font-medium rounded-md"
+      className={`inline-block rounded-md bg-blue text-white px-4 py-2 ${className}`}
       onClick={onClick}
     >
-      {children}
+      {text}
     </button>
   );
 };

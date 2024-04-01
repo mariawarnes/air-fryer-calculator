@@ -1,21 +1,37 @@
 import { useMemo, useState } from "react";
 import "./App.css";
-import Button from "./components/Button";
 import Card from "./components/Card";
 import Input from "./components/Input";
 import Select from "./components/Select";
-import { Option } from "./types";
+import { Option, Preset } from "./types";
+import {
+  unitOptions,
+  methodOptions,
+  fryTempOptions,
+  ingredientOptions,
+} from "./data";
+import Button from "./components/Button";
 
 function App() {
-  const [unit, setUnit] = useState<Option>();
-  const [method, setMethod] = useState<Option>();
+  const [unit, setUnit] = useState<Option | null>();
+  const [method, setMethod] = useState<Option | null>();
   const [inputOvenTemp, setInputOvenTemp] = useState<number>(0);
-  const [inputFryTemp, setInputFryTemp] = useState<Option>();
+  const [inputFryTemp, setInputFryTemp] = useState<Option | null>();
   const [inputMins, setInputMins] = useState<number>(0);
+  const [ingredient, setIngredient] = useState<Preset | null>(null);
 
   function celsiusToFahrenheit(celsius: number): number {
     return (celsius * 9) / 5 + 32;
   }
+
+  const reset = () => {
+    setIngredient(null);
+    setUnit(null);
+    setMethod(null);
+    setInputOvenTemp(0);
+    setInputFryTemp(null);
+    setInputMins(0);
+  };
 
   const calculateTotalsFunction = () => {
     const totals = { temp: 0, mins: 0 };
@@ -46,59 +62,18 @@ function App() {
     inputOvenTemp,
   ]);
 
-  const unitOptions = [
-    {
-      title: "Metric (C°)",
-      value: "metric",
-      symbol: "C°",
-    },
-    {
-      title: "Imperial (F°)",
-      value: "imperial",
-      symbol: "F°",
-    },
-  ];
-
-  const methodOptions = [
-    {
-      title: "Oven",
-      value: "oven",
-    },
-    {
-      title: "Pan Fry",
-      value: "fry",
-    },
-  ];
-
-  const fryTempOptions = [
-    {
-      title: "High Heat",
-      value: "high",
-      temperature: 232,
-    },
-    {
-      title: "Medium-High Heat",
-      value: "med-high",
-      temperature: 218,
-    },
-    {
-      title: "Medium",
-      value: "med",
-      temperature: 177,
-    },
-    {
-      title: "Low",
-      value: "low",
-      temperature: 150,
-    },
-  ];
-
   return (
     <Card
-      title="Convert Oven Time to Air Fryer Time"
-      description="Enter the oven cooking time and temperature to calculate the equivalent air fryer cooking time."
+      title="Air Fryer Calculator"
+      description="Enter the frying or oven cooking time and temperature to calculate the equivalent air fryer cooking time."
     >
       <div className="flex flex-col gap-4">
+        <Select
+          title="Ingredient (optional)"
+          selected={ingredient}
+          setSelected={setIngredient}
+          options={ingredientOptions}
+        />
         <Select
           title="Unit"
           selected={unit}
@@ -140,6 +115,8 @@ function App() {
           />
         )}
       </div>
+
+      <Button text={"Reset"} onClick={reset} />
 
       <div className="flex flex-col gap-4">
         <table className="w-full">

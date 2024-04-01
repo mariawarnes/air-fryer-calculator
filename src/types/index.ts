@@ -1,9 +1,4 @@
-import {
-  ChangeEventHandler,
-  Dispatch,
-  MouseEventHandler,
-  SetStateAction,
-} from "react";
+import { ChangeEventHandler, Dispatch, SetStateAction } from "react";
 
 export interface Option {
   title: string;
@@ -12,11 +7,18 @@ export interface Option {
   temperature?: number;
 }
 
+export interface Preset {
+  title: string;
+  value: string;
+  temperature: number;
+  time: number;
+}
+
 export interface SingleSelectDropdownProps {
   title: string;
-  options: Option[];
-  selected: Option | undefined;
-  setSelected: Dispatch<SetStateAction<Option | undefined>>;
+  options: Option[] | Preset[];
+  selected: Option | Preset | null | undefined;
+  setSelected: SetStateAction<Option | Preset | null | undefined>;
   className?: string;
 }
 
@@ -29,4 +31,10 @@ export interface InputProps {
   name?: string;
   required?: boolean;
   value?: string | number;
+}
+
+export interface ButtonProps {
+  text: string;
+  onClick: () => void;
+  className?: string;
 }
