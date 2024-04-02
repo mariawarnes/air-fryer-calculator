@@ -3,22 +3,17 @@ import "./App.css";
 import Card from "./components/Card";
 import Input from "./components/Input";
 import Select from "./components/Select";
-import { Option, Preset } from "./types";
-import {
-  unitOptions,
-  methodOptions,
-  fryTempOptions,
-  ingredientOptions,
-} from "./data";
+import { OptionType } from "./types";
+import { unitOptions, methodOptions, fryTempOptions } from "./data";
 import Button from "./components/Button";
 
 function App() {
-  const [unit, setUnit] = useState<Option | null>();
-  const [method, setMethod] = useState<Option | null>();
+  const [unit, setUnit] = useState<OptionType | null>();
+  const [method, setMethod] = useState<OptionType | null>();
   const [inputOvenTemp, setInputOvenTemp] = useState<number>(0);
-  const [inputFryTemp, setInputFryTemp] = useState<Option | null>();
+  const [inputFryTemp, setInputFryTemp] = useState<OptionType | null>();
   const [inputMins, setInputMins] = useState<number>(0);
-  const [ingredient, setIngredient] = useState<Preset | null>(null);
+  const [ingredient, setIngredient] = useState<OptionType | null>(null);
 
   function celsiusToFahrenheit(celsius: number): number {
     return (celsius * 9) / 5 + 32;
@@ -68,12 +63,12 @@ function App() {
       description="Enter the frying or oven cooking time and temperature to calculate the equivalent air fryer cooking time."
     >
       <div className="flex flex-col gap-4">
-        <Select
+        {/* <Select
           title="Ingredient (optional)"
           selected={ingredient}
           setSelected={setIngredient}
           options={ingredientOptions}
-        />
+        /> */}
         <Select
           title="Unit"
           selected={unit}

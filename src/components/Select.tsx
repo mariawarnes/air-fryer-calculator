@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { FaCheck, FaChevronDown } from "react-icons/fa";
+import { OptionType, SingleSelectDropdownProps } from "../types";
 
 const SingleSelectDropdown = ({
   title,
@@ -10,18 +11,21 @@ const SingleSelectDropdown = ({
   className,
 }: SingleSelectDropdownProps) => {
   // Group options by category, skipping grouping for those without a category
-  const groupedOptions = options.reduce((acc, option) => {
-    const category = option.category;
-    if (category) {
-      acc[category] = acc[category] || [];
-      acc[category].push(option);
-    } else {
-      // "Uncategorized" options are directly assigned without a category key
-      acc[""] = acc[""] || [];
-      acc[""].push(option);
-    }
-    return acc;
-  }, {});
+  const groupedOptions = options.reduce<Record<string, OptionType[]>>(
+    (acc, option) => {
+      const category = option.category ?? "";
+      if (category) {
+        acc[category] = acc[category] || [];
+        acc[category].push(option);
+      } else {
+        // "Uncategorized" options are directly assigned without a category key
+        acc[""] = acc[""] || [];
+        acc[""].push(option);
+      }
+      return acc;
+    },
+    {}
+  );
 
   return (
     <div className={`relative ${className}`}>

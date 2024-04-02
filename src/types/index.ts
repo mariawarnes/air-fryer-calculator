@@ -1,24 +1,19 @@
 import { ChangeEventHandler, Dispatch, SetStateAction } from "react";
 
-export interface Option {
+export interface OptionType {
   title: string;
   value: string;
+  category?: string;
   symbol?: string;
   temperature?: number;
-}
-
-export interface Preset {
-  title: string;
-  value: string;
-  temperature: number;
-  time: number;
+  time?: number;
 }
 
 export interface SingleSelectDropdownProps {
   title: string;
-  options: Option[] | Preset[];
-  selected: Option | Preset | null | undefined;
-  setSelected: SetStateAction<Option | Preset | null | undefined>;
+  options: OptionType[];
+  selected: OptionType | null | undefined;
+  setSelected: Dispatch<SetStateAction<OptionType | null | undefined>>;
   className?: string;
 }
 

@@ -1,6 +1,12 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const Card = ({ title, description, children }) => {
+interface CardProps {
+  title: string;
+  description: string;
+  children: ReactNode;
+}
+
+const Card = ({ title, description, children }: CardProps) => {
   return (
     <div className="rounded-md mt-6 bg-white  mx-auto text-card-foreground shadow-lg w-full max-w-lg">
       <div className="flex flex-col space-y-1.5 p-6">
