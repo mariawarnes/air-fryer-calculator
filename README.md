@@ -22,3 +22,8 @@
 <td><img src="https://img.shields.io/badge/Prettier-%23F7B93E.svg?style=flat&logo=prettier&logoColor=black" alt="Prettier"> </tr>
 </tbody></table>
 
+<p align="center">
+  <a href="https://air-fryer-calculator.netlify.app">
+    <img src="https://img.shields.io/badge/Live Demo-00C7B7.svg?style=for-the-badge&logo=netlify&logoColor=white" alt="Live Demo on Netlify">
+  </a>
+</p>
