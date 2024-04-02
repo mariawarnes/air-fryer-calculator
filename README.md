@@ -1,4 +1,4 @@
-# React Typescript Template
+# Air Fryer Calculator
 
 <table>
 <tbody><tr>
@@ -22,13 +22,3 @@
 <td><img src="https://img.shields.io/badge/Prettier-%23F7B93E.svg?style=flat&logo=prettier&logoColor=black" alt="Prettier"> </tr>
 </tbody></table>
 
-## Scripts
-
-- `npm run dev`: Start the development server using Next.js.
-- `npm run build`: Build the production-ready application.
-- `npm run lint`: Run linting checks using ESLint.
-
-## Notable Dependencies
-
-- `@headlessui/react`: Prebuilt accessible and customizable UI components.
-- `react-icons`: React icons library.
